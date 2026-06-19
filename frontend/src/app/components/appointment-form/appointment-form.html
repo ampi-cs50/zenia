@@ -1,0 +1,40 @@
+<div class="container">
+  <h2>Agendar Nuevo Turno</h2>
+  <form (ngSubmit)="saveAppointment()">
+    <div class="grid-layout">
+      <div class="field">
+        <label>Seleccionar Paciente</label>
+        <select [(ngModel)]="newAppointment.patientId" name="patientId" required>
+          <option value="0" disabled selected>Elija un paciente de la lista...</option>
+          <option *ngFor="let p of patients" [value]="p.id">
+            {{ p.lastName }}, {{ p.firstName }} (DNI: {{ p.dni }})
+          </option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Seleccionar Profesional</label>
+        <select [(ngModel)]="newAppointment.specialty" name="specialty" required>
+          <option value="" disabled selected>Elija un profesional...</option>
+          <option *ngFor="let prof of professionals" [value]="prof.specialty">
+            {{ prof.lastName }}, {{ prof.firstName }} — {{ prof.specialty }}
+          </option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Fecha</label>
+        <input type="date" [(ngModel)]="newAppointment.date" name="date" required />
+      </div>
+
+      <div class="field">
+        <label>Hora</label>
+        <input type="time" [(ngModel)]="newAppointment.time" name="time" required />
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn-primary">Agendar Turno</button>
+    </div>
+  </form>
+</div>

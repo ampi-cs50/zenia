@@ -1,0 +1,89 @@
+<div class="container">
+  <h2>Registro de Nuevo Paciente</h2>
+
+  <form (ngSubmit)="savePatient()">
+    <div class="grid-layout">
+      <div class="field">
+        <label for="firstName">Nombre</label>
+        <input
+          type="text"
+          id="firstName"
+          [(ngModel)]="newPatient.firstName"
+          name="firstName"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="lastName">Apellido</label>
+        <input
+          type="text"
+          id="lastName"
+          [(ngModel)]="newPatient.lastName"
+          name="lastName"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" [(ngModel)]="newPatient.dni" name="dni" required />
+      </div>
+
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="newPatient.email" name="email" />
+      </div>
+
+      <div class="field">
+        <label for="phone">Teléfono</label>
+        <input type="tel" id="phone" [(ngModel)]="newPatient.phone" name="phone" />
+      </div>
+
+      <div class="field">
+        <label for="healthInsurance">Obra Social / Cobertura</label>
+        <input
+          type="text"
+          id="healthInsurance"
+          [(ngModel)]="newPatient.healthInsurance"
+          name="healthInsurance"
+        />
+      </div>
+    </div>
+
+    <div class="actions">
+      <button type="submit" class="btn-primary">Guardar Paciente</button>
+    </div>
+  </form>
+</div>
+
+<hr style="margin: 2rem 0; border: 0; border-top: 1px solid #eee" />
+
+<div class="list-container">
+  <h3>Pacientes Registrados</h3>
+
+  <table class="patient-table" *ngIf="patients.length > 0; else noPatients">
+    <thead>
+      <tr>
+        <th>DNI</th>
+        <th>Paciente</th>
+        <th>Obra Social</th>
+        <th>Contacto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of patients">
+        <td>
+          <strong>{{ p.dni }}</strong>
+        </td>
+        <td>{{ p.lastName }}, {{ p.firstName }}</td>
+        <td>{{ p.healthInsurance || 'Particular' }}</td>
+        <td>{{ p.phone }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noPatients>
+    <p class="empty-msg">No hay pacientes cargados en el sistema.</p>
+  </ng-template>
+</div>

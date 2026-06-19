@@ -1,0 +1,61 @@
+<div class="container">
+  <h2>Registro de Nuevo Profesional</h2>
+  <form (ngSubmit)="saveProfessional()">
+    <div class="grid-layout">
+      <div class="field">
+        <label>Nombre</label>
+        <input type="text" [(ngModel)]="newProfessional.firstName" name="firstName" required />
+      </div>
+      <div class="field">
+        <label>Apellido</label>
+        <input type="text" [(ngModel)]="newProfessional.lastName" name="lastName" required />
+      </div>
+      <div class="field">
+        <label>Matrícula (M.N. / M.P.)</label>
+        <input type="text" [(ngModel)]="newProfessional.license" name="license" required />
+      </div>
+      <div class="field">
+        <label>Especialidad</label>
+        <input
+          type="text"
+          [(ngModel)]="newProfessional.specialty"
+          name="specialty"
+          placeholder="Ej: Cardiología"
+          required
+        />
+      </div>
+    </div>
+    <div class="actions">
+      <button type="submit" class="btn-primary">Guardar Profesional</button>
+    </div>
+  </form>
+</div>
+
+<div class="container list-section" style="margin-top: 2rem">
+  <h3>Profesionales Registrados</h3>
+  <table class="patient-table" *ngIf="professionals.length > 0; else noProfessionals">
+    <thead>
+      <tr>
+        <th>Matrícula</th>
+        <th>Profesional</th>
+        <th>Especialidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prof of professionals">
+        <td>
+          <strong>{{ prof.license }}</strong>
+        </td>
+        <td>{{ prof.lastName }}, {{ prof.firstName }}</td>
+        <td>
+          <span class="badge">{{ prof.specialty }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #noProfessionals>
+    <p class="empty-msg" style="color: #888; font-style: italic; text-align: center; padding: 1rem">
+      No hay profesionales cargados en el sistema.
+    </p>
+  </ng-template>
+</div>

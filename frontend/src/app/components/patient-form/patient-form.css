@@ -1,0 +1,92 @@
+.container {
+  background-color: #ffffff;
+  padding: clamp(1rem, 5vw, 2.5rem); /* Relleno fluido */
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+.grid-layout {
+  display: grid;
+  /* Crea columnas de al menos 15rem, si no hay espacio las apila */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(0.8rem, 2vw, 1.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #444;
+}
+
+input {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 0.4rem;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  transition: filter 0.2s;
+}
+
+.btn-primary:hover {
+  filter: brightness(0.9);
+}
+
+.list-container {
+  margin-top: 2rem;
+}
+
+.patient-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: #fff;
+}
+
+.patient-table th,
+.patient-table td {
+  padding: 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.patient-table th {
+  background-color: #f8f9fa;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.empty-msg {
+  color: #888;
+  font-style: italic;
+  text-align: center;
+  padding: 1rem;
+}

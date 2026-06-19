@@ -1,0 +1,39 @@
+<div class="list-container">
+  <div class="header-section">
+    <h2>Agenda de Turnos</h2>
+    <span class="count-badge">{{ appointments.length }} turnos programados</span>
+  </div>
+
+  <table class="appointment-table" *ngIf="appointments.length > 0; else emptyAgenda">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Hora</th>
+        <th>Paciente</th>
+        <th>Especialidad</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let app of appointments">
+        <td class="date-cell">{{ app.date | date: 'dd/MM/yyyy' }}</td>
+        <td class="time-cell">{{ app.time }} hs</td>
+        <td>
+          <strong>{{ app.patientName }}</strong>
+        </td>
+        <td>{{ app.specialty }}</td>
+        <td>
+          <span class="status-badge" [ngClass]="app.status">
+            {{ app.status === 'pending' ? 'Pendiente' : app.status }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #emptyAgenda>
+    <div class="empty-state">
+      <p>No hay turnos registrados en el sistema.</p>
+    </div>
+  </ng-template>
+</div>

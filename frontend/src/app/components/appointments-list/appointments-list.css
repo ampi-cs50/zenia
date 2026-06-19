@@ -1,0 +1,87 @@
+/* Definimos variables para que sea fácil cambiar el color después */
+:root {
+  --primary-color: #1976d2;
+  --bg-card: white;
+  --text-main: #333;
+  --text-muted: #666;
+}
+
+.list-container {
+  /* clamp: mínimo 1rem, ideal 2.5vw (elástico), máximo 2rem */
+  padding: clamp(1rem, 2.5vw, 2rem);
+  background: var(--bg-card);
+  border-radius: 0.5rem; /* 8px aprox */
+  box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+  margin-top: 1.5rem;
+}
+
+.header-section {
+  display: flex;
+  flex-wrap: wrap; /* Para que en móviles el badge baje si no hay espacio */
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  /* El título se adapta solo: entre 1.2rem y 2rem */
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  color: var(--text-main);
+  margin: 0;
+}
+
+.count-badge {
+  background: #e3f2fd;
+  color: var(--primary-color);
+  padding: 0.35rem 0.8rem;
+  border-radius: 1rem;
+  font-size: 0.875rem; /* 14px aprox */
+  font-weight: bold;
+}
+
+/* Contenedor con scroll horizontal solo si la tabla no entra */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.appointment-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 40rem; /* Evita que la tabla se comprima demasiado */
+}
+
+.appointment-table th {
+  text-align: left;
+  padding: 0.75rem;
+  border-bottom: 0.125rem solid #eee;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.appointment-table td {
+  padding: 0.75rem;
+  border-bottom: 0.0625rem solid #eee;
+  font-size: clamp(0.85rem, 2vw, 1rem); /* Texto de celda fluido */
+}
+
+.status-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.pending {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.date-cell {
+  color: var(--primary-color);
+  font-weight: 500;
+  white-space: nowrap; /* Evita que la fecha se rompa en dos renglones */
+}
